@@ -1,24 +1,12 @@
-var express = require("express");
+var htmlRoutes = require("express").Router();
 var path = require("path");
 
-var app = express();
-var PORT = 3000;
-
-// Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-app.get("/survey", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/survey.html"));
-});
-
-app.get("*", (req, res) => {
+htmlRoutes.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/home.html"));
 });
 
-// Starts the server to begin listening
-// =============================================================
-app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
-  
+htmlRoutes.get("/survey", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/survey.html"));
+});
+
+module.exports = htmlRoutes;
