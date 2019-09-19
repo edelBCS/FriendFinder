@@ -1,12 +1,7 @@
 var express = require("express");
 var path = require("path");
-var htmlRoutes = require("./app/routing/htmlRoutes");
-var apiRoutes = require("./app/routing/apiRoutes");
 
 var app = express();
-
-app.use("/", htmlRoutes);
-app.use("/", apiRoutes);
 
 var PORT = process.env.PORT || 8080;
 
@@ -14,6 +9,10 @@ var PORT = process.env.PORT || 8080;
 app.use(express.static(path.join(__dirname, "app/public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
+require("./app/routing/htmlRoutes")(app);
+require("./app/routing/apiRoutes")(app);
 
 
 // Starts the server to begin listening
