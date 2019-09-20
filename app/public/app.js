@@ -56,7 +56,7 @@ $(document).ready(function(){
 
             $.post("/api/friends", newFriend, (data) => {
                 $(".modal-body").append($("<h1>").text(data.name));
-                $(".modal-body").append($("<img>").attr("src", data.photo));
+                $(".modal-body").append($("<img>").attr("src", data.photo).attr("alt", "Missing Profile Image"));
                 $(".modal-body").append($("<h1>").text("SCORE: " + data.score));
                 $("#bestFriendModal").modal("toggle");
             });
