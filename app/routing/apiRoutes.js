@@ -21,17 +21,20 @@ module.exports = function(app){
         function findFriend(user){
             var bestFriendScore = 1000;
             var bestFriendName;
+            var bestFriendPhoto;
         
             friendFinder.friends.forEach(element => {
                 var tempFriend = compareFriend(user.scores, element.scores);
                 if(tempFriend < bestFriendScore){
                     bestFriendScore = tempFriend;
                     bestFriendName = element.name;
+                    bestFriendPhoto = element.photo;
                 }        
             });
-            console.log(bestFriendScore + bestFriendName)
+
             res.json({
                 name: bestFriendName,
+                photo: bestFriendPhoto,
                 score: bestFriendScore
             })
         }

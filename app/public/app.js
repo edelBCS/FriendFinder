@@ -1,6 +1,10 @@
 $(document).ready(function(){
     $("#missingData").hide();
 
+    $("#modalCloseBtn").on("click", event => {
+        $(".modal-body").empty();
+    });
+
     $("#submitBtn").on("click", (event) => {
         event.preventDefault();
     
@@ -51,8 +55,10 @@ $(document).ready(function(){
             };
 
             $.post("/api/friends", newFriend, (data) => {
-                $("#exampleModalCenter").modal("toggle");
-                console.log(data);
+                $(".modal-body").append($("<h1>").text(data.name));
+                $(".modal-body").append($("<img>").attr("src", data.photo));
+                $(".modal-body").append($("<h1>").text("SCORE: " + data.score));
+                $("#bestFriendModal").modal("toggle");
             });
         }
     });
