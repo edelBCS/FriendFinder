@@ -1,9 +1,31 @@
 $("#submitBtn").on("click", (event) => {
     event.preventDefault();
 
+    
+
     //validate data
     function validData() {
-        return true
+        var isValid = true;
+
+        if($("#nameInput").val() === ""){
+            console.log("Missing Name!");
+            isValid = false;
+        }
+
+        if($("#photoLinkInput").val() === ""){
+            console.log("Missing Photo Link!");
+            isValid = false;
+        }
+
+        $(".question").each(function() {
+            console.log($(this).val())
+            if($(this).val() === "Choose..."){
+                console.log("Missing Question!");
+                isValid = false;
+            }
+        });
+    
+        return isValid;
     }
 
     //post data to server and get back person
