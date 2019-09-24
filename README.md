@@ -3,7 +3,7 @@
 ## Installation
 This utilizes the ```express``` and ```path``` Node.js libraries
 
-Once downloaded installing dependencies by running:
+Once downloaded install dependencies by running:
 ```
 npm i
 ```
